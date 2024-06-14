@@ -1,0 +1,39 @@
+package de.fortmeier.product.product;
+
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/v1/products")
+@RequiredArgsConstructor
+public class ProductController {
+
+    private final ProductService service;
+
+    @PostMapping
+    public ResponseEntity<Integer> create(
+            @RequestBody @Valid ProductRequest request) {
+        return ResponseEntity.ok(service.createProduct(request));
+    }
+
+
+    @GetMapping("/purchase")
+    public ResponseEntity<List<ProductPurchaseResponse>> purchaseProducts(
+            @RequestBody List<ProductPurchaseResponse> requests
+    ) {
+        return ResponseEntity.ok(service.purchaseProducts(requests));
+    }
+
+
+    @GetMapping("/{product-id}")
+    public ResponseEntity<ProductResponse> findById(
+            @PathVariable("produt-id") Integer productId
+    ) {
+        return ResponseEntity.ok(service.findById(productId));
+    }
+}
