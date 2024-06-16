@@ -24,7 +24,7 @@ public class ProductController {
 
     @GetMapping("/purchase")
     public ResponseEntity<List<ProductPurchaseResponse>> purchaseProducts(
-            @RequestBody List<ProductPurchaseResponse> requests
+            @RequestBody List<ProductPurchaseRequest> requests
     ) {
         return ResponseEntity.ok(service.purchaseProducts(requests));
     }
@@ -32,8 +32,14 @@ public class ProductController {
 
     @GetMapping("/{product-id}")
     public ResponseEntity<ProductResponse> findById(
-            @PathVariable("produt-id") Integer productId
+            @PathVariable("product-id") Integer productId
     ) {
         return ResponseEntity.ok(service.findById(productId));
+    }
+
+
+    @GetMapping
+    public ResponseEntity<List<ProductResponse>> findAll() {
+        return ResponseEntity.ok(service.findAll());
     }
 }

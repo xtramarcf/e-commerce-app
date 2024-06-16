@@ -2,13 +2,10 @@ package de.fortmeier.product.product;
 
 import jakarta.validation.constraints.NotNull;
 
-import java.math.BigDecimal;
-
-public record ProductPurchaseResponse(
+public record ProductPurchaseRequest(
+        @NotNull(message = "Product is mandatory")
         Integer productId,
-        String name,
-        String description,
-        BigDecimal price,
+        @NotNull(message = "Quantity is mandatory")
         double quantity
 ) {
 }
