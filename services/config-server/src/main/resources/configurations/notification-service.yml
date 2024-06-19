@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: notification-service
   data:
     mongodb:
       username: mf
@@ -17,7 +15,7 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.trusted.packages: '*'
-        spring.json.type.mapping: paymentConfirmation:de.fortmeier.payment.notification.PaymentNotificationRequest,orderConfirmation:de.fortmeier.order.kafka.OrderConfirmation
+        spring.json.type.mapping: paymentConfirmation:de.fortmeier.notification.kafka.payment.PaymentConfirmation,orderConfirmation:de.fortmeier.notification.kafka.order.OrderConfirmation
   mail:
     host: localhost
     port: 1025

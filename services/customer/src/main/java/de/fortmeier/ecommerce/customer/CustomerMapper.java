@@ -14,6 +14,7 @@ public class CustomerMapper {
                 .firstName(request.firstName())
                 .lastName(request.lastName())
                 .email(request.email())
+                .address(request.address())
                 .build();
     }
 
